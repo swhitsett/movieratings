@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619035911) do
+ActiveRecord::Schema.define(version: 20160620070635) do
 
-  create_table "mrtests", force: :cascade do |t|
-    t.string   "first"
+  create_table "movies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "movieId"
+    t.integer  "stars"
+    t.string   "date"
+    t.integer  "User_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ratings", ["User_id"], name: "index_ratings_on_User_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
