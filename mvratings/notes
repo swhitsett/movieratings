@@ -1,0 +1,13 @@
+when storing use move id
+
+user: id,email - hasmany reviews
+rating: stars, date, comment - belongsto user/movie
+movie: review - hasmany ratings
+
+rails g scaffold User email:string
+rails g scaffold Rating movieId:integer stars:integer date:string User:references
+rails g scaffold Movie
+
+set home page....
+
+render ratings within movies
