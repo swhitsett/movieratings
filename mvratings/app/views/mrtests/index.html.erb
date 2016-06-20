@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Mrtests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <% @r = Tmdb::Search.movie("looper")%>
+  <tbody>
+    <% @r.results.each do |mrtest| %>
+      <tr>
+        <td><%= mrtest.title %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mrtest', new_mrtest_path %>
