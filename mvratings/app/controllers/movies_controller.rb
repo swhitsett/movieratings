@@ -5,14 +5,27 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
-    input = ""
     @query = nil
-    if(params[:user_input]) 
-      @query = Tmdb::Search.movie(params[:user_input])
+    @gValues = Tmdb::Genre.movie_list
+    input = params[:user_input]
+
+
+    if(params[:user_input] != "" && input != nil) 
+      @query = Tmdb::Search.movie(input)
+
+    else
+      render :index
     end
+
+
     
   end
 
+  def viewMovie   #pratically a show
+    @title = params[:title]
+    @overview = params[:overview]
+    @id = params[:id]
+  end
   # GET /movies/1
   # GET /movies/1.json
   def show
@@ -75,6 +88,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.fetch(:movie, {})
+      params.fetch(:movie,:mv, {})
     end
 end

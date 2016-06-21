@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :ratings
   root 'movies#index'
   get 'query',to:'movies#index'
+  get 'static_show', to: 'movies#viewMovie'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
