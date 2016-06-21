@@ -5,13 +5,17 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
-
+    input = ""
+    @query = nil
+    if(params[:user_input]) 
+      @query = Tmdb::Search.movie(params[:user_input])
+    end
+    
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @query = Tmdb::Search.movie(params[:user_input])
   end
 
   # GET /movies/new

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+#- user auth
+gem 'devise'
+#- movie database
 gem 'themoviedb-api'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

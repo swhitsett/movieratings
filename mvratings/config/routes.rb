@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :movies
   resources :ratings
-  resources :users
   root 'movies#index'
-  get 'query',to:'movies#show'
+  get 'query',to:'movies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

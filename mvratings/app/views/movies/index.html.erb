@@ -13,6 +13,13 @@
     <%= text_field_tag(:user_input) %>
     <%= submit_tag("Search") %>
   <% end %>
+  <br>
+  <% if (@query != nil) %>
+    <% @query.results.each do |movie| %>
+      <%= movie.title %> <br>
+    <% end %>
+  <% end %>
+
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
