@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
     @query = nil
     @gValues = Tmdb::Genre.movie_list
     @input = params[:user_input]
-
+    @time = Time.now
     if(params[:user_input] != "" && @input != nil) 
       @query = Tmdb::Search.movie(@input).results
     elsif (params[:sort] == "1")
@@ -23,20 +23,20 @@ class MoviesController < ApplicationController
     elsif (params[:sort] == "2")
       @input = params[:q]
       @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['release_date']}
-      if (params[:pivot] == "tf")
+      if (params[:pivot] == "tf2")
          @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['release_date']}.reverse!
-         @lpivot = "tb"
+         @lpivot = "tb2"
       else
-         @lpivot = "tf"
+         @lpivot = "tf2"
       end
     elsif (params[:sort] == "3")
       @input = params[:q]
       @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['genre_ids']}
-      if (params[:pivot] == "tf")
+      if (params[:pivot] == "tf3")
          @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['genre_ids']}.reverse!
-         @lpivot = "tb"
+         @lpivot = "tb3"
       else
-         @lpivot = "tf"
+         @lpivot = "tf3"
       end
     end
 
