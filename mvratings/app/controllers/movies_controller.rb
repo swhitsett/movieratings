@@ -7,13 +7,37 @@ class MoviesController < ApplicationController
     #@movies = Movie.all
     @query = nil
     @gValues = Tmdb::Genre.movie_list
-    input = params[:user_input]
+    @input = params[:user_input]
 
-
-    if(params[:user_input] != "" && input != nil) 
-      @query = Tmdb::Search.movie(input)
-    else
-      render :index
+    if(params[:user_input] != "" && @input != nil) 
+      @query = Tmdb::Search.movie(@input).results
+    elsif (params[:sort] == "1")
+      @input = params[:q]
+      @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['title']}
+      if (params[:pivot] == "tf")
+         @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['title']}.reverse!
+         @lpivot = "tb"
+      else
+         @lpivot = "tf"
+      end
+    elsif (params[:sort] == "2")
+      @input = params[:q]
+      @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['release_date']}
+      if (params[:pivot] == "tf")
+         @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['release_date']}.reverse!
+         @lpivot = "tb"
+      else
+         @lpivot = "tf"
+      end
+    elsif (params[:sort] == "3")
+      @input = params[:q]
+      @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['genre_ids']}
+      if (params[:pivot] == "tf")
+         @query = Tmdb::Search.movie(@input).results.sort_by{|h| h['genre_ids']}.reverse!
+         @lpivot = "tb"
+      else
+         @lpivot = "tf"
+      end
     end
 
   end
@@ -27,7 +51,9 @@ class MoviesController < ApplicationController
     @user = User.all
   end
   def sort
-    #@test = params[@query]
+    @query = params[:q]
+    @gValues = Tmdb::Genre.movie_list
+    
   end
   # GET /movies/1
   # GET /movies/1.json

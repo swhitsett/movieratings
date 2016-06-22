@@ -15,15 +15,16 @@
   <% end %>
   <br>
   <tbody>
+   <%= @local_pivot %>
 
     <% if (@query != nil) %>
       <tr>
-        <td><strong><%= link_to "Title", sort_path %></strong></td>
-        <td><strong>Release</strong></td>
-        <td><strong>Genre</strong></td>
+        <td><strong><%= link_to "Title", sort_path(:sort => "1", :q => @input, :pivot => @lpivot) %></strong></td>
+        <td><strong><%= link_to "Release", sort_path(:sort => "2", :q => @input, :piovt => @lpivot) %></strong></td>
+        <td><strong><%= link_to "Genre", sort_path(:sort => "3", :q => @input, :pivot => @lpivot) %></strong></td>
       </tr>
     
-      <% @query.results.each do |movie| %>
+      <% @query.each do |movie| %>
         <tr>
           <td><%= link_to movie.title, static_show_path(:title => movie.title,
                                                     :overview => movie.overview,

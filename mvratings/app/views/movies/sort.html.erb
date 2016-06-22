@@ -1,1 +1,41 @@
-<% render :index %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Movies</h1>
+<%= @test %>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <br>
+  <tbody>
+</script>
+    <% if (@query != nil) %>
+      <tr>
+        <td><strong><%= link_to "Title", sort_path(:q => @query) %></strong></td>
+        <td><strong>Release</strong></td>
+        <td><strong>Genre</strong></td>
+      </tr>
+    
+      <% @query.results.each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, static_show_path(:title => movie.title,
+                                                    :overview => movie.overview,
+                                                    :id => movie.id) %> </td>
+          <td><%= movie.release_date%></td>
+          <td>
+            <% movie.genre_ids.each do |id| %>
+              <%= @gValues.find {|h1| h1['id']== id }['name'] %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+
