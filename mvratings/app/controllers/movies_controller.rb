@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    #@movies = Movie.all
     @query = nil
     @gValues = Tmdb::Genre.movie_list
     input = params[:user_input]
@@ -12,19 +12,21 @@ class MoviesController < ApplicationController
 
     if(params[:user_input] != "" && input != nil) 
       @query = Tmdb::Search.movie(input)
-
     else
       render :index
     end
 
-
-    
   end
 
   def viewMovie   #pratically a show
     @title = params[:title]
     @overview = params[:overview]
     @id = params[:id]
+    @rdb = Rating.all
+    @rating = Rating.new
+  end
+  def sort
+    #@test = params[@query]
   end
   # GET /movies/1
   # GET /movies/1.json

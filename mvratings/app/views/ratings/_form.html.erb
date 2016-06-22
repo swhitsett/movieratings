@@ -12,20 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :movieId %><br>
-    <%= f.number_field :movieId %>
+    <%= f.hidden_field :movieId, :value => @id %>
   </div>
   <div class="field">
     <%= f.label :stars %><br>
     <%= f.number_field :stars %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
+    <%= f.hidden_field :date %>
   </div>
   <div class="field">
-    <%= f.label :User_id %><br>
-    <%= f.text_field :User_id %>
+    <%= f.hidden_field :User_id %>
+    <%= hidden_field_tag :User_id, 6 %>
   </div>
   <div class="actions">
     <%= f.submit %>

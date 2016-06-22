@@ -4,3 +4,27 @@
 <%= @overview %>
 <br><br><br>
 
+<% @rdb.each do |r| %>
+	<% if (r.movieId == @id) %>
+		<%= r.stars %>
+	<% end %>
+<% end %>
+
+<%= render 'ratings/form' %>
+<br><br>
+
+<table><tbody>
+	<tr>
+		<td>Rating</td>
+		<td>Created at</td>
+		<td>Created By</td>
+	</tr>
+	<% @rdb.each do |r| %>
+		<tr>
+			<% if (r.movieId.to_i == @id.to_i) %>
+				<td><%= r.stars %></td>
+				<td><%= r.created_at %></td>
+			<% end %>
+		</tr>
+	<% end %>
+</tbody></table>

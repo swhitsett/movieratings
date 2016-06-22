@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   resources :movies
   resources :ratings
   root 'movies#index'
+
+  resources :movies do
+    resources :ratings, shallow: true
+  end
+
   get 'query',to:'movies#index'
+  #get 'set_rating',to:'ratings#setRating'
   get 'static_show', to: 'movies#viewMovie'
+  get 'sort', to: 'movies#index' # this is wrong
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

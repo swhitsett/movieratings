@@ -11,7 +11,10 @@ class RatingsController < ApplicationController
   # GET /ratings/1.json
   def show
   end
+  
+  # def setRating
 
+  # end
   # GET /ratings/new
   def new
     @rating = Rating.new
