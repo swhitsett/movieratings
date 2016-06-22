@@ -19,6 +19,7 @@ Signed in as <%= current_user.email %>. Not you?
 </div>
 
 <%= yield %>
-
+<%= link_to 'Home', root_path %>
+<%= link_to 'All Reviews', ratings_path %>
 </body>
 </html>

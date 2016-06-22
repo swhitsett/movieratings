@@ -22,8 +22,7 @@
     <%= f.hidden_field :date %>
   </div>
   <div class="field">
-    <%= f.hidden_field :User_id %>
-    <%= hidden_field_tag :User_id, 6 %>
+    <%= f.hidden_field :User_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>

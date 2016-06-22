@@ -24,6 +24,7 @@ class MoviesController < ApplicationController
     @id = params[:id]
     @rdb = Rating.all
     @rating = Rating.new
+    @user = User.all
   end
   def sort
     #@test = params[@query]

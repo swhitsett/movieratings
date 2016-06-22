@@ -10,8 +10,10 @@
 	<% end %>
 <% end %>
 
-<%= render 'ratings/form' %>
-<br><br>
+<% if user_signed_in? %>
+	<%= render 'ratings/form' %>
+	<br><br>
+<% end %>
 
 <table><tbody>
 	<tr>
@@ -24,6 +26,7 @@
 			<% if (r.movieId.to_i == @id.to_i) %>
 				<td><%= r.stars %></td>
 				<td><%= r.created_at %></td>
+				<td><%= @user.at(r.User_id-1).email %></td>
 			<% end %>
 		</tr>
 	<% end %>
