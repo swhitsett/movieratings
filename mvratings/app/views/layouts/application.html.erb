@@ -17,9 +17,17 @@ Signed in as <%= current_user.email %>. Not you?
 <%= link_to "Sign in", new_user_session_path %>
 <% end %>
 </div>
+<div>
+  <%= form_tag(query_path, method: "get") do %>
+    <%= label_tag(:user_input, "Search for a movie")%>
+    <%= text_field_tag(:user_input) %>
+    <%= hidden_field_tag(:time, @time) %>
+    <%= submit_tag("Search") %>
+  <% end %>
 
+</div>
 <%= yield %>
-<%= link_to 'Home', root_path %>
+<%= link_to 'Home', movies_path %>
 <%= link_to 'All Reviews', ratings_path %>
 </body>
 </html>
