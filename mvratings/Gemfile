@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
+
+# testing formating
+gem 'factory_girl'
+gem 'capybara'
 # delete the one below
 group :development, :test do
    gem'rspec-rails'
 end
-#to test
-gem 'rails-perftest'
 #- user auth
 gem 'devise'
 #- movie database

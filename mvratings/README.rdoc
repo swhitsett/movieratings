@@ -1,4 +1,7 @@
 == README
+* For testing rspec is being used to test some features
+   tests are found in the spec file and are called by running "rake"
+* API key for Tmdb is located in key_loc.rb
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
