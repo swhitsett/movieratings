@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+# delete the one below
+group :development, :test do
+   gem'rspec-rails'
+end
 #to test
 gem 'rails-perftest'
 #- user auth

@@ -20,8 +20,6 @@
         <td><%= rating.stars %></td>
         <td><%= rating.created_at %></td>
         <td><%= rating.User.email %></td>
-        <td><%= link_to 'Show', rating %></td>
-        <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
         <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

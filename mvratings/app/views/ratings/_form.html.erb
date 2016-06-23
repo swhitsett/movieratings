@@ -15,11 +15,8 @@
     <%= f.hidden_field :movieId, :value => @id %>
   </div>
   <div class="field">
-    <%= f.label :stars %><br>
-    <%= f.number_field :stars %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :date %>
+    <%= f.label :stars %> (0-5) <br>
+    <%= f.number_field :stars, max: 5 %>
   </div>
   <div class="field">
     <%= f.hidden_field :User_id, :value => current_user.id %>
