@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class MoviesControllerTest < ActionController::TestCase
+test "static_show" do
+   get @query
+   assert_response :sucess
+end
+=begin
   setup do
     @movie = movies(:one)
   end
@@ -46,4 +51,5 @@ class MoviesControllerTest < ActionController::TestCase
 
     assert_redirected_to movies_path
   end
+=end
 end
